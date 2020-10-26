@@ -25,21 +25,7 @@ class Main{
             return
         }
         def params = [:]
-/*
-        if(options.arguments().size()>0){
-            def command = new ProgramsImport(
-                                serverUrl:'http://gbcdcu01u.gbcuat.local/InfosilemAcademicSuiteAPI/TimetablerImportExportServices.svc',
-                                serverName: 'sqlsj-uat',
-                                dbName: 'TEST222')
-            println command.test()
-            //command.results.each{
-            //    println it
-            //}
-            println command.resultCode
-            println command.resultErrorDetail
-            return
-        }
-*/
+
         params.verbose = options.v
         
         if(options.u){
@@ -66,11 +52,11 @@ class Main{
             go "https://pollev.com/login"
             waitFor { title == "Log in or create an account" }
 
-            $("input", class: "component-element-text-field__input", name: "username") << params.user //'sifei.li@mail.utoronto.ca'
+            $("input", class: "component-element-text-field__input", name: "username") << params.user 
             $("button.component-auth__submit")[0].click()
             
             waitFor { $("input", class: "component-element-text-field__input", name: "password") }
-            $("input", class: "component-element-text-field__input", name: "password") << params.password //'lisifei158'
+            $("input", class: "component-element-text-field__input", name: "password") << params.password 
             $("button.component-auth__submit")[0].click()
 
             waitFor { $("input", class: "text-field__input") }
